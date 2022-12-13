@@ -3,6 +3,3 @@ flask_restful
 Pillow
 requests
 gunicorn
-ast
-base64
-io
