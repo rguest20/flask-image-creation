@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw, ImageFont
 from flask import Flask
 from flask_restful import Resource, Api, reqparse, fields, marshal
 
-def drawLogo(base, image, size_x, size_y, pos_x, pos_y):
+def drawImage(base, image, size_x, size_y, pos_x, pos_y):
     data = BytesIO(base64.b64decode(image))
     the_image = Image.open(data)
     the_image = the_image.resize((size_x,size_y))
@@ -29,7 +29,7 @@ def imageGenerate(api_json, buffer):
     for block in blocks:
         block = ast.literal_eval(block)
         if block["type"] == "image":
-            drawLogo(
+            drawImage(
                 img, 
                 block["image"], 
                 block["size_x"], 
